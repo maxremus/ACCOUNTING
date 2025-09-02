@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Вътрешна грешка')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+<section class="hero">
+    <div class="container centered-narrow">
+        <h1>Опа… нещо се обърка</h1>
+        <p>Възникна вътрешна грешка (500). Опитай отново по-късно.</p>
+        <a class="btn white" th:href="@{/}">Към началото</a>
+    </div>
+</section>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

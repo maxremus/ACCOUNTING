@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('За нас')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+
+<header class="hero">
+    <div class="container centered-narrow">
+        <h1>Кои сме ние</h1>
+        <p>Екип от професионалисти със страст към точните числа и ясната комуникация.</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container grid two-col" style="align-items:start">
+        <div class="card content">
+            <h2>Нашата мисия</h2>
+            <p>Да помагаме на бизнесите да растат, като поемем сложното и досадното — счетоводството.</p>
+            <h3>Цени</h3>
+            <ul>
+                <li><b>Прозрачност:</b> без скрити такси.</li>
+                <li><b>Надеждност:</b> срокове и качество.</li>
+                <li><b>Комуникация:</b> разбираемо и човешки.</li>
+            </ul>
+        </div>
+
+        <div class="stack">
+            <div class="card">
+                <h3>Екип</h3>
+                <div class="grid grid-2">
+                    <div style="display:flex; gap:.9rem; align-items:center">
+                        <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#22d3ee,#3b82f6)"></div>
+                        <div><b>Мариян Петров</b><div class="muted">Счетоводител</div></div>
+                    </div>
+                    <div style="display:flex; gap:.9rem; align-items:center">
+                        <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#22d3ee)"></div>
+                        <div><b>Диана Кирилова</b><div class="muted">Управител и ТРЗ специалист</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Защо нас?</h3>
+                <ul class="muted" style="margin:0; padding-left:1rem">
+                    <li>Приоритизиран сапорт за клиенти</li>
+                    <li>Съвременни инструменти и електронен обмен</li>
+                    <li>Гъвкави пакети и ясни SLA</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

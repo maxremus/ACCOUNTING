@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Контакти')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+
+<header class="hero">
+    <div class="container centered-narrow">
+        <h1>Свържете се с нас</h1>
+        <p>Оставете съобщение и ще отговорим възможно най-скоро.</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container grid two-col">
+        <div class="card">
+            <form class="form" th:action="@{/kontakt}" th:object="${form}" method="post">
+                <div th:if="${success}" class="alert success">Благодарим! Съобщението е изпратено.</div>
+                <div th:if="${sendError}" class="alert danger" th:text="${sendError}"></div>
+
+                <div>
+                    <label>Име</label>
+                    <input class="input" type="text" th:field="*{name}"/>
+                    <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                </div>
+
+                <div>
+                    <label>Email</label>
+                    <input class="input" type="email" th:field="*{email}"/>
+                    <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                </div>
+
+                <div>
+                    <label>Телефон</label>
+                    <input class="input" type="text" th:field="*{phone}"/>
+                    <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+                </div>
+
+                <div>
+                    <label>Съобщение</label>
+                    <textarea class="textarea" th:field="*{message}"></textarea>
+                    <div class="error" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></div>
+                </div>
+
+                <div style="display:flex; gap:.75rem; justify-content:flex-end">
+                    <a class="btn outline" th:href="@{/}">Отказ</a>
+                    <button class="btn" type="submit">Изпрати</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Контакт информация</h3>
+            <p class="muted">Ще се радваме да помогнем.</p>
+            <div class="stack">
+                <div><b>Имейл:</b> <a href="mailto:info@example.com">info@example.com</a></div>
+                <div><b>Телефон:</b> <a href="tel:+359000000000">+359 00 000 000</a></div>
+                <div><b>Адрес:</b> ул. Пазарска, Видин</div>
+                <div class="muted">Работно време: Пон–Пет, 09:00–18:00</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

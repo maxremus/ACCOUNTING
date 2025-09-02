@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Начало')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+
+<header class="hero">
+    <div class="container centered-narrow">
+        <!-- Банер под текста в hero -->
+        <div class="container">
+            <a class="hero-banner" th:href="@{/uslugi}">
+                <picture>
+
+                </picture>
+            </a>
+        </div>
+
+        <span class="badge">Сигурност • Прозрачност • Скорост</span>
+        <h1 style="margin-top:.6rem">Счетоводни услуги за твоя бизнес</h1>
+        <p>Надеждно обслужване, ясни цени и бърза комуникация. Спести време и фокусирай върху растежа.</p>
+        <div style="display:flex; gap:.75rem; margin-top:1rem">
+            <a class="btn white" th:href="@{/kontakt}">Свържи се с нас</a>
+            <a class="btn outline" th:href="@{/uslugi}">Разгледай услугите</a>
+        </div>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container grid grid-3">
+        <div class="card">
+            <div class="icon i-docs"></div>
+            <h3>Абонаментно обслужване</h3>
+            <p class="muted">Пълно счетоводно обслужване за фирми от всякакъв размер.</p>
+        </div>
+        <div class="card">
+            <div class="icon"></div>
+            <h3>Труд и работна заплата</h3>
+            <p class="muted">ТРЗ, договори, осигуровки, консултации и представителство.</p>
+        </div>
+        <div class="card">
+            <div class="icon"></div>
+            <h3>Данъчни консултации</h3>
+            <p class="muted">Оптимизация и съдействие при проверки и ревизии.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container kpis">
+        <div class="kpi"><div class="muted">Клиенти</div><b>50+</b></div>
+        <div class="kpi"><div class="muted">Години опит</div><b>10+</b></div>
+        <div class="kpi"><div class="muted">Срок за отговор</div><b>< 24ч</b></div>
+        <div class="kpi"><div class="muted">Точност</div><b>99.9%</b></div>
+    </div>
+</section>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

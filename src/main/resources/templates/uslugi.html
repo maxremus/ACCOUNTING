@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Услуги')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+
+<header class="hero">
+    <div class="container centered-narrow">
+        <h1>Нашите услуги</h1>
+        <p>Гъвкави пакети според нуждите на вашия бизнес. Прозрачни условия, без изненади.</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container grid grid-3">
+        <div class="card">
+            <h3>Абонаментно обслужване</h3>
+            <ul class="muted" style="margin:0; padding-left:1rem">
+                <li>Текущо счетоводно обслужване</li>
+                <li>ДДС дневници и справки</li>
+                <li>Годишно приключване</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>ТРЗ и човешки ресурси</h3>
+            <ul class="muted" style="margin:0; padding-left:1rem">
+                <li>Назначаване и освобождаване</li>
+                <li>Фишове, декларации</li>
+                <li>Консултации</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Данъчни услуги</h3>
+            <ul class="muted" style="margin:0; padding-left:1rem">
+                <li>Данъчно планиране</li>
+                <li>Подкрепа при ревизии</li>
+                <li>Регистрации и дерегистрации</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 style="color:#fff; margin-bottom:1rem">Сравнение на пакети</h2>
+        <div class="card" style="overflow:auto">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Функция</th><th>Старт</th><th>Стандарт</th><th>Премиум</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td>Текущо обслужване</td><td>Да</td><td>Да</td><td>Да</td></tr>
+                <tr><td>ДДС</td><td>—</td><td>Да</td><td>Да</td></tr>
+                <tr><td>ТРЗ (до 5 лица)</td><td>—</td><td>—</td><td>Да</td></tr>
+                <tr><td>Консултации</td><td>Имейл</td><td>Имейл + Телефон</td><td>Приоритетно</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

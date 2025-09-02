@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Страницата не е намерена')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+<section class="hero">
+    <div class="container centered-narrow">
+        <h1>404</h1>
+        <p>Тази страница не съществува.</p>
+        <a class="btn white" th:href="@{/}">Към началото</a>
+    </div>
+</section>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

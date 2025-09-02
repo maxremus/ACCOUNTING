@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title th:text="${title}">Счетоводна кантора</title>
+    <!-- По желание добави Inter от Google Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" th:href="@{/css/site.css}"/>
+    <script defer th:src="@{/js/main.js}"></script>
+</head>
+<body>
+
+<!-- Навигация -->
+<nav class="topbar" th:fragment="nav">
+    <div class="container bar">
+        <a th:href="@{/}" class="brand brand--text" aria-label="Начало">
+  <span class="wordmark">
+    <span class="wordmark-line1">ДИАНА-КИРИЛОВИ ЕООД</span>
+    <span class="wordmark-line2">чисти сметки добри приятели</span>
+  </span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Отвори меню" aria-expanded="false" data-nav-toggle>
+            ☰ Меню
+        </button>
+
+        <div class="nav">
+            <a th:href="@{/}" class="nav-link nav-home">Начало</a>
+            <a th:href="@{/uslugi}" class="nav-link nav-services">Услуги</a>
+            <a th:href="@{/za-nas}" class="nav-link nav-about">За нас</a>
+            <a th:href="@{/kontakt}" class="nav-link nav-mail">Контакти</a>
+        </div>
+    </div>
+
+    <div class="container mobile-nav" data-mobile-nav>
+        <a th:href="@{/}">Начало</a>
+        <a th:href="@{/uslugi}">Услуги</a>
+        <a th:href="@{/za-nas}">За нас</a>
+        <a th:href="@{/kontakt}">Контакти</a>
+    </div>
+</nav>
+
+<!-- Footer -->
+<footer class="footer" th:fragment="footer">
+    <div class="container" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap">
+        <div>© <span th:text="${#temporals.format(#temporals.createNow(),'yyyy')}"></span> Счетоводна кантора</div>
+        <div class="muted">Изградено от MaxWebPro</div>
+    </div>
+</footer>
+
+</body>
+</html>
