@@ -317,6 +317,10 @@ label{font-weight:600; font-size:.95rem}
 .i-map     { --icon:url("/icons/map-pin.svg"); }
 .i-mail    { --icon:url("/icons/mail.svg"); }
 
+.i-subscription { --icon: url("/icons/subscription.svg"); }
+.i-labor-cost { --icon: url("/icons/labor-cost.svg"); }
+.i-tax-consultant { --icon: url("/icons/tax-consultant.svg"); }
+
 /* дребен туик за мобилен */
 @media (max-width:640px){
   .icon{ inline-size:40px; block-size:40px; }
