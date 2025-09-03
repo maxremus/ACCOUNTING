@@ -368,3 +368,51 @@ label{font-weight:600; font-size:.95rem}
   .hero-illustration { order: -1; margin-bottom: 1rem; } /* илюстрацията да се качи над текста на мобилен */
 }
 
+.team-member {
+  display: flex;
+  gap: .9rem;
+  align-items: center;
+}
+
+/* кръгъл фон */
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#22d3ee,#3b82f6);
+  position: relative;
+}
+
+/* SVG икона вътре */
+.avatar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 60%;
+  height: 60%;
+  background: white;
+  mask: url("/icons/user.svg") center/contain no-repeat;
+  -webkit-mask: url("/icons/user.svg") center/contain no-repeat;
+  opacity: 0.95;
+}
+
+.avatar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 60%;
+  height: 60%;
+  background: white;
+  mask: url("/icons/men-user.svg") center/contain no-repeat;
+  -webkit-mask: url("/icons/men-user.svg") center/contain no-repeat;
+  opacity: 0.95;
+
+/* Ако искаш различни градиенти */
+.i-user { background: linear-gradient(135deg,#3b82f6,#22d3ee); }
+
+/* Ако искаш различни градиенти */
+.i-men-user { background: linear-gradient(135deg,#3b82f6,#22d3ee); }
+
+
