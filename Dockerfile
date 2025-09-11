@@ -1,11 +1,11 @@
-FROM eclipse-temurin:21-jdk AS build
+# Етап 1: билд
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY . .
-RUN ./mvnw -q -DskipTests clean package
+RUN mvn -q -DskipTests clean package
 
+# Етап 2: runtime
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app/app.jar"]
-HEALTHCHECK --interval=30s --timeout=3s --start-period=30s \
-  CMD wget -qO- http://localhost:8080/actuator/health | grep -q '"status":"UP"' || exit 1
