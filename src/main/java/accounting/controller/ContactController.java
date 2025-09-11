@@ -62,4 +62,5 @@ public class ContactController {
             model.addAttribute("sendError", "Възникна грешка при изпращането. Опитайте отново по-късно.");
             return "kontakt";
         }
+   }
 }
