@@ -18,10 +18,13 @@ public class ContactController {
 
     private static final Logger log = LoggerFactory.getLogger(ContactController.class);
     private final MailService mailService;
+    private final TelegramService telegramService;
 
-    public ContactController(MailService mailService) {
+    public ContactController(MailService mailService, TelegramService telegramService) {
         this.mailService = mailService;
+        this.telegramService = telegramService;
     }
+
 
     @GetMapping("/kontakt")
     public String contact(Model model) {
@@ -40,7 +43,18 @@ public class ContactController {
             return "kontakt";
         }
         try {
+            // Изпращане на имейл
             mailService.sendContact(form);
+
+            // Изпращане на Telegram известие
+            String tgMessage = String.format(
+                    "Нов контакт!\nИме: %s\nИмейл: %s\nСъобщение: %s",
+                    form.getName(),
+                    form.getEmail(),
+                    form.getMessage()
+            );
+            telegramService.sendMessage(tgMessage);
+
             ra.addFlashAttribute("success", true);
             return "redirect:/kontakt";
         } catch (Exception ex) {
@@ -48,5 +62,4 @@ public class ContactController {
             model.addAttribute("sendError", "Възникна грешка при изпращането. Опитайте отново по-късно.");
             return "kontakt";
         }
-    }
 }
