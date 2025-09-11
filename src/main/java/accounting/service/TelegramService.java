@@ -1,5 +1,11 @@
 package accounting.service;
 
+import org.springframework.stereotype.Service; // Липсващ импорт
+import org.springframework.beans.factory.annotation.Value; // Липсващ импорт
+import org.springframework.web.client.RestTemplate; // Липсващ импорт
+import java.nio.charset.StandardCharsets; // Липсващ импорт
+import org.springframework.web.util.UriUtils; // Липсващ импорт
+
 @Service
 public class TelegramService {
 
