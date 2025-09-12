@@ -18,11 +18,10 @@ import accounting.service.TelegramService;
 public class ContactController {
 
     private static final Logger log = LoggerFactory.getLogger(ContactController.class);
-    private final MailService mailService;
     private final TelegramService telegramService;
 
-    public ContactController(MailService mailService, TelegramService telegramService) {
-        this.mailService = mailService;
+    public ContactController(TelegramService telegramService) {
+        
         this.telegramService = telegramService;
     }
 
