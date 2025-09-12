@@ -35,33 +35,30 @@ public class ContactController {
         return "kontakt";
     }
 
-    @PostMapping("/kontakt")
-    public String submit(@Valid @ModelAttribute("form") ContactForm form,
-                         BindingResult result,
-                         RedirectAttributes ra,
-                         Model model) {
-        if (result.hasErrors()) {
-            return "kontakt";
-        }
-        try {
-            // Изпращане на имейл
-            mailService.sendContact(form);
+   @PostMapping("/kontakt")
+public String submit(@Valid @ModelAttribute("form") ContactForm form,
+                     BindingResult result,
+                     RedirectAttributes ra,
+                     Model model) {
+    if (result.hasErrors()) {
+        return "kontakt";
+    }
+    try {
+        // Само Telegram известие
+        String tgMessage = String.format(
+                "Нов контакт!\nИме: %s\nИмейл: %s\nСъобщение: %s",
+                form.getName(),
+                form.getEmail(),
+                form.getMessage()
+        );
+        telegramService.sendMessage(tgMessage);
 
-            // Изпращане на Telegram известие
-            String tgMessage = String.format(
-                    "Нов контакт!\nИме: %s\nИмейл: %s\nСъобщение: %s",
-                    form.getName(),
-                    form.getEmail(),
-                    form.getMessage()
-            );
-            telegramService.sendMessage(tgMessage);
-
-            ra.addFlashAttribute("success", true);
-            return "redirect:/kontakt";
-        } catch (Exception ex) {
-            log.error("Грешка при изпращане на имейл", ex);
-            model.addAttribute("sendError", "Възникна грешка при изпращането. Опитайте отново по-късно.");
-            return "kontakt";
-        }
+        ra.addFlashAttribute("success", true);
+        return "redirect:/kontakt";
+    } catch (Exception ex) {
+        log.error("Грешка при изпращане на Telegram известие", ex);
+        model.addAttribute("sendError", "Възникна грешка при изпращането. Опитайте отново по-късно.");
+        return "kontakt";
+    }
    }
 }
