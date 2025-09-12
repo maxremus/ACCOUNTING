@@ -33,29 +33,31 @@ public class ContactController {
     }
 
     @PostMapping("/kontakt")
-    public String submit(@Valid @ModelAttribute("form") ContactForm form,
-                         BindingResult result,
-                         RedirectAttributes ra,
-                         Model model) {
-        if (result.hasErrors()) {
-            return "kontakt";
-        }
-        try {
-            // Изпращане на Telegram известие
-            String tgMessage = String.format(
-                    "Нов контакт!\nИме: %s\nИмейл: %s\nСъобщение: %s",
-                    form.getName(),
-                    form.getEmail(),
-                    form.getMessage()
-            );
-            telegramService.sendMessage(tgMessage);
+public String submit(@Valid @ModelAttribute("form") ContactForm form,
+                     BindingResult result,
+                     RedirectAttributes ra,
+                     Model model) {
+    if (result.hasErrors()) {
+        return "kontakt";
+    }
+    try {
+        // Ако искаш имейл – запази това
+        // mailService.sendContact(form);
 
-            ra.addFlashAttribute("success", true);
-            return "redirect:/kontakt";
-        } catch (Exception ex) {
-            log.error("Грешка при изпращане на Telegram съобщение", ex);
-            model.addAttribute("sendError", "Възникна грешка при изпращането. Опитайте отново по-късно.");
-            return "kontakt";
+        // Telegram съобщение
+        String tgMessage = "Нов контакт!\n" +
+                           "Име: " + form.getName() + "\n" +
+                           "Имейл: " + form.getEmail() + "\n" +
+                           "Съобщение: " + form.getMessage();
+
+        telegramService.sendMessage(tgMessage);
+
+        ra.addFlashAttribute("success", true);
+        return "redirect:/kontakt";
+    } catch (Exception ex) {
+        log.error("Грешка при изпращане на съобщение", ex);
+        model.addAttribute("sendError", "Възникна грешка при изпращането. Опитайте отново по-късно.");
+        return "kontakt";
         }
     }
 }
